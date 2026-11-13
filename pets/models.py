@@ -9,14 +9,25 @@ class Raca(models.Model):
     def __str__(self):
         return self.nome
 
+class Tutor(models.Model):
+    nome = models.CharField(max_length=50)
+    telefone = models.CharField(max_length=9)
+    email = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nome
+
 
 class Animal(models.Model):
     nome = models.CharField(max_length=50)
-    dono = models.CharField(max_length=50)
-    nascimento = models.DateTimeField('Data de nascimento')
-    telefone_dono = models.CharField("Telefone do dono", max_length=11)
     tipo_animal = models.CharField("Tipo do Animal", max_length=1)
+    nascimento = models.DateTimeField('Data de nascimento')
     raca = models.ForeignKey(Raca, on_delete=models.CASCADE)
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.nome} ({self.raca})"
+
 
     def nascimento_valido(self):
         hoje = datetime.date.today()

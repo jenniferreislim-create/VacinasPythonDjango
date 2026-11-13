@@ -8,8 +8,9 @@
     <h1>{{ animal }}</h1>
 
     <ul>
-        <li>Dono: {{ animal.dono }}</li>
-        <li>Telefone do dono: {{ animal.telefone_dono }}</li>
+        <li>Tutor: {{ animal.tutor.nome }}</li>
+        <li>Telefone do tutor: {{ animal.tutor.telefone }}</li>
+        <li>Email do tutor: {{ animal.tutor.email }}</li>
         <li>Nascimento do animal: {{ animal.nascimento }}</li>
     </ul>
 
